@@ -1,0 +1,34 @@
+@startuml
+actor Cliente
+participant Formulario
+participant Comercio
+participant BSA
+participant Gateway
+
+activate Cliente
+Client -> Comercio : Elige pagar con BSA
+activate Comercio
+Comercio -> BSA : Solicita Opciones de pago (Discover)
+activate BSA
+BSA -> Comercio : Responde Tarjetas y Bancos
+deactivate BSA
+Comercio -> Cliente : Muestra opciones de pago
+Cliente -> Comercio : Elige opción de pago
+activate BSA
+Comercio -> BSA : Envía el podido de autorización (Transaction)
+BSA -> Comercio : Respuesta
+deactivate BSA
+Comercio -> Cliente : Levanta Formulario
+create Formulario
+Cliente -> Formulario : Login
+activate Formulario
+Formulario -> Cliente : Muestra billetera
+Cliente -> Formulario : Selecciona Tarjeta
+Formulario -> Comercio : Devuelve Token
+destroy Formulario
+Comercio -> Gateway : Paga con el Token
+activate Gateway
+Gateway -> Comercio : Responde resultado del pago
+deactivate Gateway
+Comercio -> Cliente : Muestra resultado del pago
+@enduml

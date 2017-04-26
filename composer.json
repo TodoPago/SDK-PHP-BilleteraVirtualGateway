@@ -1,0 +1,21 @@
+{
+    "name": "todopago/php-sdk-billetera-virtual-gateway",
+    "description": "SDK de TodoPago para Billetera Virtual para Gateway",
+    "require": {
+        "php": ">=5.3"
+    },
+    "autoload": {
+        "psr-4": {
+            "TodoPago\\": "TodoPago/lib"
+        }
+    },
+    "repositories": [
+        {
+             "type": "composer",
+             "url": "https://packagist.org"
+        },
+        { 
+            "packagist": false 
+        }
+    ]
+}
