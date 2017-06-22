@@ -25,8 +25,8 @@ $operationData = array(
 	"concept" => "compra",
 	"amount" => "10,99",
 	"buyerPreselection" => array("paymentMethodId" => 42),
-	"availablePaymentMethods" => array("1","42"),
-	"availableBanks" => array("11")
+	"availablePaymentMethods" => array(-1,42),
+	"availableBanks" => array(1)
 );
 
 $technicalData = array(
@@ -48,7 +48,7 @@ $generalData = array(
 	"merchant" => 41702,
 	"security" => "TODOPAGO 8A891C0676A25FBF052D1C2FFBC82DEE",
 	"operationName" => "Compra",
-	"publicRequestKey" => "3fc8dcee-dd46-40f2-a178-0f74f01221eb",
+	"publicRequestKey" => "7144dd9c-2b53-4d34-9381-7de7ba2ab9b1",
 	"remoteIpAddress" => "192.168.11.87"
 );
 
@@ -57,9 +57,9 @@ $operationData = array(
 	"resultCodeGateway" => -1,
 	"idGateway" => 8,
 	"resultMessage" => "APROBADA",
-	"operationDatetime" => "20170704085736",
-	"ticketNumber" => "1231122",
-	"codigoAutorizacion" => "45007799",
+	"operationDatetime" => "20170704015736",
+	"ticketNumber" => "001234",
+	"codigoAutorizacion" => "112233",
 	"currencyCode" => "032",
 	"operationID" => "1234",
 	"concept" => "compra",
@@ -68,8 +68,8 @@ $operationData = array(
 );
 
 $tokenizationData = array(
-	"publicTokenizationField"=>"4444444444444444",
-	"credentialMask"=>"4510XXXXX00001"
+	"publicTokenizationField"=>"4507991234560001",
+	"credentialMask"=>"4507XXXXXXXX0001"
 );
 
 $pn = new \TodoPago\BilleteraVirtualGateway\PushNotify($generalData,$operationData,$tokenizationData);

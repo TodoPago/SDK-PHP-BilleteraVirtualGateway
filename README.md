@@ -12,6 +12,7 @@ Todo Pago - módulo SDK-PHP para conexión con gateway de pago
       + [Diagrama de Secuencia](#bvg-uml)
       + [Discover](#bvg-discover)
       + [Transaction](#bvg-transaction)
+      + [Formulario Billetera](#bvg-form)
       + [Notificación Push](#bvg-push)
       + [Obtener Credenciales](#credenciales)
 
@@ -73,19 +74,19 @@ $connector = new TodoPago\Connector($http_header, $mode); // $mode: "test" para 
 ```
 
 <a name="bvg"></a>
-### Billetera Virtual para Gateways
+## Billetera Virtual para Gateways
 
 La Billetera Virtual para Gateways es la versión de Todo Pago para los comercios que permite utilizar los servicios de la billetera TodoPago dentro de los e-commerce, respetando y manteniendo sus respectivas promociones con bancos, marcas y números de comercio (métodos de adquirencia). Manteniendo su Gateway de pago actual, y utilizando BVG para la selección del medio de pago y la tokenización de la información para mayor seguridad en las transacciones.
 
 <a name="bvg-uml"></a>
-#### Diagrama de secuencia
+### Diagrama de secuencia
 
 ![Diagrama de Secuencia BSA](http://www.plantuml.com/plantuml/png/ZL9BJiCm4Dtd5BDi5roW2oJw0I7ngMWlC3ZJOd0zaUq4XJknuWYz67Q-JY65bUNHlFVcpHiKZWqib2JjACdGE2baXjh1DPj3hj187fGNV20ZJehppTNWVuEEth5C4XHE5lxJAJGlN5nsJ323bP9xWWptQ42mhlXwQAlO0JpOTtZSXfMNT0YFcQzhif1MD0oJfRI22pBJdYYm1jnG-ubinjhZjcXUoQ654kQe1TiafG4srczzpE0-9-iC0f-CSDPgQ3v-wQvtLAVskTB5yHE156ISofG33dEVdFp0ccYoDQXje64z7N4P1iN_cRgZmkU8yH48Gm4JLIA3VJM0UIzrRob2H6s_xl1PAaME38voRqYH28l6DgzJqjxpaegSLE6JvJVIthZNu7BW83BVtAp7hVqTLcVezrr3Eo_jORVD8wTaoERAOHMKgXEErjwI_CpvLk_yS1ZX6pXCrhbzUM0dTsKJRoJznsMUdwOZYMirnpS0)
 
 Para acceder al servicio, los vendedores podrán adherirse en el sitio exclusivo de Botón o a través de su ejecutivo comercial. En estos procesos se generará el usuario y clave para este servicio.
 
 <a name="bvg-discover"></a>
-##### Discover
+### Discover
 El método **discover** permite conocer los medios de pago disponibles
 
  ```php
@@ -124,7 +125,7 @@ Ejemplo de respuesta:
 <br>
 
 <a name="bvgtransaction"></a>
-##### Transaction
+### Transaction
 El método **transaction** permite registrar una transacción.
 
 Se debe instanciar un objeto **TodoPago\BilleteraVirtualGateway\Transaction** con los datos de la misma, el mismo será devuelto con los datos de la respuesta del servicio.
@@ -218,8 +219,18 @@ Ejemplo de respuesta:
 
 [<sub>Volver a inicio</sub>](#inicio)
 
+
+<a name="bvg-form"></a>
+### Formulario Billetera
+Para abrir el formulario se debe agregar un archivo javascript provisto por TodoPago e instanciar la API Javascript tal cual se muestra en el ejemplo correspondiente.
+
+[Ver ejemplo](resources/form_hibrido-ejemplo/index.html)
+
+[<sub>Volver a inicio</sub>](#inicio)
+
+
 <a name="bvg-push"></a>
-##### Notificación Push
+### Notificación Push
 El método **pushnotify** permite registrar la finalización de una transacción.
 
 Se debe instanciar un objeto **TodoPago\BilleteraVirtualGateway\PushNotify** con los datos de la misma, el mismo será devuelto con los datos de la respuesta del servicio.
@@ -301,7 +312,7 @@ Ejemplo de respuesta:
 <br>
 
 <a name="credenciales"></a>
-#### Obtener credenciales
+### Obtener credenciales
 El SDK permite obtener las credenciales "Authentification", "MerchandId" y "Security" de la cuenta de Todo Pago, ingresando el usuario y contraseña.<br>
 Esta funcionalidad es útil para obtener los parámetros de configuración dentro de la implementación.
 
