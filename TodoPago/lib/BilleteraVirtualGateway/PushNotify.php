@@ -22,6 +22,12 @@ class PushNotify {
 	public function setGeneralData($generalData) {
 		foreach($generalData as $key => $value) {
 			if(in_array($key, $this->generalDataKeys) && !empty($generalData[$key])) {
+				if($key == "merchant")
+					\TodoPago\Data\Validate::integer($value, "merchant");
+				if($key == "remoteIpAddress")
+					\TodoPago\Data\Validate::ip($value, "remoteIpAddress");
+
+				\TodoPago\Data\Validate::characters($value, $key);
 				$this->generalData[$key] = $value;
 				unset($this->generalDataKeys[array_search($key,$this->generalDataKeys)]);
 			}
@@ -37,6 +43,18 @@ class PushNotify {
 	public function setOperationData($operationData) {
 		foreach($operationData as $key => $value) {
 			if(in_array($key, $this->operationDataKeys) && !empty($operationData[$key])) {
+				\TodoPago\Data\Validate::characters($value, $key);
+				
+				if($key == "operationDatetime")
+					\TodoPago\Data\Validate::datetime($value, "operationDatetime");
+				if($key == "amount")
+					\TodoPago\Data\Validate::amount($value, $key);
+				if($key == "idGateway")
+					\TodoPago\Data\Validate::integer($value, $key);				
+				if($key == "resultCodeGateway")
+					\TodoPago\Data\Validate::integer($value, $key);				
+				if($key == "resultCodeMedioPago")
+					\TodoPago\Data\Validate::integer($value, $key);				
 				$this->operationData[$key] = $value;
 				unset($this->operationDataKeys[array_search($key,$this->operationDataKeys)]);
 			}
@@ -52,6 +70,7 @@ class PushNotify {
 	public function setTokenizationData($tokenizationData) {
 		foreach($tokenizationData as $key => $value) {
 			if(in_array($key, $this->tokenizationDataKeys) && !empty($tokenizationData[$key])) {
+				\TodoPago\Data\Validate::characters($value, $key);
 				$this->tokenizationData[$key] = $value;
 				unset($this->tokenizationDataKeys[array_search($key,$this->tokenizationDataKeys)]);
 			}

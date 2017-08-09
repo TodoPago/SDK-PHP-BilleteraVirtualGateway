@@ -4,7 +4,7 @@ namespace TodoPago\Exception;
 class TodoPagoException extends \Exception {
 	protected $data;
 	
-	public function __construct($message,  $code = 0, $data = null, Exception $previous = null) {
+	public function __construct($message = null,  $code = 0, $data = null, \Exception $previous = null) {
 		parent::__construct($message, $code, $previous);
 		$this->data = $data;
 	}

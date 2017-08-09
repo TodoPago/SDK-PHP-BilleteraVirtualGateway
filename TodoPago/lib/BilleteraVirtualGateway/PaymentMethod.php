@@ -21,31 +21,20 @@ class PaymentMethod {
 		return $this->id;
 	}
 
-	public function setId($id){
-		$this->id = $id;
-	}
-
 	public function getNombre(){
 		return $this->nombre;
-	}
-
-	public function setNombre($nombre){
-		$this->nombre = $nombre;
 	}
 
 	public function getIdBanco(){
 		return $this->idBanco;
 	}
 
-	public function setIdBanco($idBanco){
-		$this->idBanco = $idBanco;
-	}
-
 	public function getNombreBanco(){
 		return $this->nombreBanco;
 	}
 
-	public function setNombreBanco($nombreBanco){
-		$this->nombreBanco = $nombreBanco;
+	public function getTipoMedioPago() {
+		return $this->tipo;
 	}
+
 }

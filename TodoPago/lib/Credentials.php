@@ -17,7 +17,7 @@ class Credentials extends Client\Rest {
 		}
 
 		if($response["Credentials"]["resultado"]["codigoResultado"] != 0) {
-			throw new \TodoPago\Exception\ResponseException($response["Credentials"]["resultado"]["mensajeResultado"]);
+			throw new \TodoPago\Exception\ResponseException($response["Credentials"]["resultado"]["mensajeResultado"],$response["Credentials"]["resultado"]["codigoResultado"]);
 		}
 
 		$data->setMerchant($response["Credentials"]["merchantId"]);

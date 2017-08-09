@@ -8,7 +8,7 @@ class BilleteraVirtualGateway extends Client\Rest {
 	}
 
 	public function transactions(\TodoPago\BilleteraVirtualGateway\Transactions $data){
-		$this->url = $this->endpoint . "bsa/transactions/api/BSA/transaction";
+		$this->url = $this->endpoint . "ms/tx/v1/bsa";
 
 		$response = $this->getClient($data->getData(), "POST", array("Content-Type: application/json"));
 		$data->setResponse($response);
@@ -28,9 +28,10 @@ class BilleteraVirtualGateway extends Client\Rest {
 	}
 
 	public function pushnotify(\TodoPago\BilleteraVirtualGateway\PushNotify $data){
-		$this->url = $this->endpoint . "bsa/transactions/api/BSA/transaction/notificacionPush";
+		$prk = $data->getGeneralData()["publicRequestKey"];
+		$this->url = $this->endpoint . "ms/tx/v1/bsa/" . $prk;
 
-		$response = $this->getClient($data->getData(), "POST", array("Content-Type: application/json"));
+		$response = $this->getClient($data->getData(), "PUT", array("Content-Type: application/json"));
 		$data->setResponse($response);
 		return $data;
 	}

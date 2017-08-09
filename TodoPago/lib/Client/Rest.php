@@ -33,10 +33,17 @@ namespace TodoPago\Client;
 			curl_setopt($curl, CURLOPT_POSTFIELDS,json_encode($data));
 		}
 
+		if($method == "PUT") {
+			curl_setopt($curl, CURLOPT_CUSTOMREQUEST, "PUT");
+			curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
+			curl_setopt($curl, CURLOPT_POSTFIELDS,json_encode($data));
+		}
+
 		$result = curl_exec($curl);
 		$http_status = curl_getinfo($curl, CURLINFO_HTTP_CODE);
 
 		curl_close($curl);
+
 		if($http_status != 200 && $http_status != 201) {
 
 			$res = json_decode($result,true);
@@ -44,7 +51,7 @@ namespace TodoPago\Client;
 				throw new \TodoPago\Exception\ResponseException($res["statusMessage"], $res["statusCode"], $res);
 			} else if(isset($res["errorCode"])) {
 				throw new \TodoPago\Exception\ResponseException($res["errorMessage"], $res["errorCode"], $res);
-			} else {
+			} else { 
 				throw new \TodoPago\Exception\ResponseException($res["error"], $res["status"], $res);
 			}
 		}
