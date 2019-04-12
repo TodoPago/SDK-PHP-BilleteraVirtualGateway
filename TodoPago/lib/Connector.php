@@ -1,7 +1,7 @@
 <?php
 namespace TodoPago;
 
-define('TODOPAGO_BILLETERAVIRTUALGATEWAY_VERSION','1.1.0');
+define('TODOPAGO_BILLETERAVIRTUALGATEWAY_VERSION','1.2.0');
 define('TODOPAGO_BILLETERAVIRTUALGATEWAY_ENDPOINT_TEST','https://developers.todopago.com.ar/');
 define('TODOPAGO_BILLETERAVIRTUALGATEWAY_ENDPOINT_PROD','https://apis.todopago.com.ar/');
 

@@ -16,7 +16,7 @@ class BilleteraVirtualGateway extends Client\Rest {
 	}
 
 	public function discover() {
-		$this->url = $this->endpoint . "bsa/discover/api/BSA/paymentMethod/discover";
+		$this->url = $this->endpoint . "ms/discover/api/BSA/paymentMethod/discover";
 		$response = $this->getClient(array(), "GET", array("Content-Type: application/json"));
 
 		$discover = new \TodoPago\BilleteraVirtualGateway\Discover();
